@@ -1,4 +1,4 @@
-package com.example.patyk.machinelearning;
+package com.patrycja.filip.machinelearning;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

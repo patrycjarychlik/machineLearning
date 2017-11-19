@@ -1,4 +1,4 @@
-package com.example.patyk.machinelearning;
+package com.patrycja.filip.machinelearning;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

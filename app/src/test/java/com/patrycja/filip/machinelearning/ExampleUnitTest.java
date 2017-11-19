@@ -1,4 +1,4 @@
-package com.example.patyk.machinelearning;
+package com.patrycja.filip.machinelearning;
 
 import org.junit.Test;
 
