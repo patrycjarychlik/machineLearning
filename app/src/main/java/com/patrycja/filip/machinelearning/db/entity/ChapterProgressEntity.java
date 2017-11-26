@@ -33,5 +33,5 @@ public class ChapterProgressEntity {
     private boolean correctAnswered;
 
     @ColumnInfo(name = "time_took_to_answer")
-    private Date timeTookToAnswer;
+    private int timeTookToAnswer;
 }
