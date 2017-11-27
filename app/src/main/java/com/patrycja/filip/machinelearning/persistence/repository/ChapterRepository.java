@@ -18,6 +18,11 @@ public class ChapterRepository extends DataRepository implements IChapterReposit
     }
 
     @Override
+    public void insertAll(List<ChapterEntity> chapterEntities) {
+        database.chapterDao().insertAll(chapterEntities);
+    }
+
+    @Override
     public LiveData<List<ChapterEntity>> loadChapters() {
         return database.chapterDao().loadChapters();
     }
