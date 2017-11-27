@@ -16,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.patrycja.filip.machinelearning.R;
@@ -44,6 +45,9 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        ProgressBar progressBar = (ProgressBar) findViewById(R.id.progress_bar);
+        progressBar.setProgress(30);
 
         final ChapterViewModel chapterViewModel = ViewModelProviders.of(this).get(ChapterViewModel.class);
         chapterViewModel.getObservableChapters().observe(this, new Observer<List<ChapterEntity>>() {
