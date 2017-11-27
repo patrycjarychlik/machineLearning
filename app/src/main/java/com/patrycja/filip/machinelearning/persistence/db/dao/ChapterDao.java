@@ -18,6 +18,6 @@ public interface ChapterDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(List<ChapterEntity> chapters);
 
-    @Query("SELECT * FROM ChapterEntity")
+    @Query("SELECT * FROM chapters")
     LiveData<List<ChapterEntity>> loadChapters();
 }

@@ -17,6 +17,6 @@ public interface ChapterProgressDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(ChapterProgressEntity chapterProgress);
 
-    @Query("SELECT * FROM chapter_progress WHERE chapterId = :chapterId")
+    @Query("SELECT * FROM chapter_progress WHERE chapter_id = :chapterId")
     List<ChapterProgressEntity> loadAllByChapterId(int chapterId);
 }
