@@ -1,4 +1,4 @@
-package com.patrycja.filip.machinelearning.db.entity;
+package com.patrycja.filip.machinelearning.persistence.db.entity;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;

@@ -1,11 +1,11 @@
-package com.patrycja.filip.machinelearning.db.dao;
+package com.patrycja.filip.machinelearning.persistence.db.dao;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 
-import com.patrycja.filip.machinelearning.db.entity.UserDetailEntity;
+import com.patrycja.filip.machinelearning.persistence.db.entity.UserDetailEntity;
 
 /**
  * Created by zwsfke on 2017-11-26.

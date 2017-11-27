@@ -1,11 +1,12 @@
-package com.patrycja.filip.machinelearning.db.dao;
+package com.patrycja.filip.machinelearning.persistence.db.dao;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 
-import com.patrycja.filip.machinelearning.db.entity.ChapterEntity;
+import com.patrycja.filip.machinelearning.persistence.db.entity.ChapterEntity;
 
 import java.util.List;
 
@@ -17,6 +18,6 @@ public interface ChapterDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(List<ChapterEntity> chapters);
 
-    @Query("SELECT * FROM chapters")
-    List<ChapterEntity> loadAllChapters();
+    @Query("SELECT * FROM ChapterEntity")
+    LiveData<List<ChapterEntity>> loadChapters();
 }
