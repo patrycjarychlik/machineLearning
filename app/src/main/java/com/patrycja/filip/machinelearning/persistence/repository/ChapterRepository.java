@@ -12,9 +12,21 @@ import java.util.List;
  * Created by zwsfke on 2017-11-27.
  */
 public class ChapterRepository extends DataRepository implements IChapterRepository {
+    private static ChapterRepository dataRepoInstance;
 
     private ChapterRepository(AppDatabase database) {
         super(database);
+    }
+
+    public static ChapterRepository getInstance(final AppDatabase database) {
+        if (dataRepoInstance == null) {
+            synchronized (ChapterRepository.class) {
+                if (dataRepoInstance == null) {
+                    dataRepoInstance = new ChapterRepository(database);
+                }
+            }
+        }
+        return dataRepoInstance;
     }
 
     @Override

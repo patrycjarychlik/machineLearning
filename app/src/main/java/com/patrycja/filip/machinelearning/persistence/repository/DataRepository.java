@@ -7,22 +7,9 @@ import com.patrycja.filip.machinelearning.persistence.db.AppDatabase;
  */
 
 public class DataRepository {
-    private static DataRepository dataRepoInstance;
     final AppDatabase database;
 
     DataRepository(final AppDatabase database) {
         this.database = database;
     }
-
-    public static DataRepository getInstance(final AppDatabase database) {
-        if (dataRepoInstance == null) {
-            synchronized (DataRepository.class) {
-                if (dataRepoInstance == null) {
-                    dataRepoInstance = new DataRepository(database);
-                }
-            }
-        }
-        return dataRepoInstance;
-    }
-
 }

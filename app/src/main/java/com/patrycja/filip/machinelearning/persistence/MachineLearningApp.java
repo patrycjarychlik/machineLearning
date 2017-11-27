@@ -4,7 +4,6 @@ import android.app.Application;
 
 import com.patrycja.filip.machinelearning.persistence.db.AppDatabase;
 import com.patrycja.filip.machinelearning.persistence.repository.ChapterRepository;
-import com.patrycja.filip.machinelearning.persistence.repository.DataRepository;
 
 /**
  * Created by zwsfke on 2017-11-27.
@@ -22,7 +21,7 @@ public class MachineLearningApp extends Application {
         return AppDatabase.getInstance(this, appExecutors);
     }
 
-    public DataRepository getChapterRepository() {
+    public ChapterRepository getChapterRepository() {
         return ChapterRepository.getInstance(getDatabase());
     }
 }
