@@ -20,7 +20,7 @@ import com.patrycja.filip.machinelearning.persistence.db.entity.UserDetailEntity
 /**
  * Created by zwsfke on 2017-11-26.
  */
-@Database(entities = {ChapterEntity.class, ChapterProgressEntity.class, UserDetailEntity.class}, version = 1)
+@Database(entities = {ChapterEntity.class, ChapterProgressEntity.class, UserDetailEntity.class}, exportSchema = false, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase appDatabaseInstance;
