@@ -4,12 +4,9 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
-import lombok.Data;
-
 /**
  * Created by zwsfke on 2017-11-26.
  */
-@Data
 @Entity(tableName = "user_details")
 public class UserDetailEntity {
     @PrimaryKey(autoGenerate = true)
@@ -17,4 +14,20 @@ public class UserDetailEntity {
 
     @ColumnInfo(name = "total_exp")
     private int totalExp;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getTotalExp() {
+        return totalExp;
+    }
+
+    public void setTotalExp(int totalExp) {
+        this.totalExp = totalExp;
+    }
 }
