@@ -8,4 +8,9 @@
     tools:context="com.patrycja.filip.machinelearning.HomeActivity"
     tools:showIn="@layout/app_bar_home">
 
+    <include
+        layout="@layout/circle_button_with_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </android.support.constraint.ConstraintLayout>
