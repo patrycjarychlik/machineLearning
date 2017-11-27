@@ -1,19 +1,23 @@
 package com.patrycja.filip.machinelearning.activity;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.patrycja.filip.machinelearning.R;
+import com.patrycja.filip.machinelearning.persistence.db.entity.ChapterEntity;
+import com.patrycja.filip.machinelearning.persistence.viewmodel.ChapterViewModel;
+
+import java.util.List;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -33,6 +37,14 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        final ChapterViewModel chapterViewModel = ViewModelProviders.of(this).get(ChapterViewModel.class);
+        chapterViewModel.getObservableChapters().observe(this, new Observer<List<ChapterEntity>>() {
+            @Override
+            public void onChanged(@Nullable List<ChapterEntity> chapterEntities) {
+                Log.println(Log.INFO, "TEST_VIEW_MODEL", "List of chapters: " + chapterEntities.toString());
+            }
+        });
     }
 
     @Override
