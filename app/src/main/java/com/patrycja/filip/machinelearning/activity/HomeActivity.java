@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,10 +17,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.patrycja.filip.machinelearning.R;
+import com.patrycja.filip.machinelearning.fragment.BadgesFragment;
+import com.patrycja.filip.machinelearning.fragment.HomeFragment;
+import com.patrycja.filip.machinelearning.fragment.SettingsFragment;
 import com.patrycja.filip.machinelearning.persistence.db.entity.ChapterEntity;
 import com.patrycja.filip.machinelearning.persistence.db.exception.DbExportException;
 import com.patrycja.filip.machinelearning.persistence.db.helper.AppDatabaseBackupHelper;
@@ -45,9 +48,6 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        ProgressBar progressBar = (ProgressBar) findViewById(R.id.progress_bar);
-        progressBar.setProgress(30);
 
         final ChapterViewModel chapterViewModel = ViewModelProviders.of(this).get(ChapterViewModel.class);
         chapterViewModel.getObservableChapters().observe(this, new Observer<List<ChapterEntity>>() {
@@ -93,26 +93,51 @@ public class HomeActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+        Fragment fragment = null;
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
-
-        } else if (id == R.id.nav_badges) {
-
-        } else if (id == R.id.nav_rate) {
-
-        } else if (id == R.id.nav_settings) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_invite_friends) {
-
-        } else if (id == R.id.nav_export_db) {
-            exportDatabaseToDownloadsDir();
+        switch (id) {
+            case R.id.nav_home:
+                fragment = new HomeFragment();
+                break;
+            case R.id.nav_badges:
+                fragment = new BadgesFragment();
+                break;
+            case R.id.nav_rate:
+                showNotImplementedToastMsg();
+                break;
+            case R.id.nav_settings:
+                fragment = new SettingsFragment();
+                break;
+            case R.id.nav_share:
+                showNotImplementedToastMsg();
+                break;
+            case R.id.nav_invite_friends:
+                showNotImplementedToastMsg();
+                break;
+            case R.id.nav_export_db:
+                exportDatabaseToDownloadsDir();
+                break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+
+        changeCurrentView(fragment);
+
         return true;
     }
+
+    private void changeCurrentView(Fragment fragment) {
+        if (fragment != null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.content_home, fragment).addToBackStack(null)
+                    .commit();
+        }
+    }
+
+    private void showNotImplementedToastMsg() {
+        Toast.makeText(this, "This action is not implemented yet!", Toast.LENGTH_LONG).show();
+    }
+
 }
