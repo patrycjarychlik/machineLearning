@@ -13,6 +13,8 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.patrycja.filip.machinelearning.R;
+import com.patrycja.filip.machinelearning.commons.AppSharedPreferences;
+import com.patrycja.filip.machinelearning.components.AppRatingDialog;
 import com.patrycja.filip.machinelearning.fragment.BadgesFragment;
 import com.patrycja.filip.machinelearning.fragment.HomeFragment;
 import com.patrycja.filip.machinelearning.fragment.SettingsFragment;
@@ -25,6 +27,8 @@ public class HomeActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        AppSharedPreferences.getInstance(getApplicationContext()).incrementLaunchCount();
+        
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -39,6 +43,7 @@ public class HomeActivity extends AppCompatActivity
 
         setupInitialFragment();
         setOnBackStackListener();
+        showAppRatingDialog();
     }
 
     @Override
@@ -53,6 +58,15 @@ public class HomeActivity extends AppCompatActivity
 
     private void setupInitialFragment() {
         getSupportFragmentManager().beginTransaction().add(R.id.content_home, new HomeFragment()).commit();
+    }
+
+    private void showAppRatingDialog() {
+        AppSharedPreferences sharedPrefs = AppSharedPreferences.getInstance(getApplicationContext());
+        boolean isAppRated = sharedPrefs.isAppRated();
+        int launchCount = sharedPrefs.getLaunchCount();
+        if (!isAppRated && launchCount > 3) {
+            AppRatingDialog.createDialog(this).show();
+        }
     }
 
     @Override
@@ -93,7 +107,7 @@ public class HomeActivity extends AppCompatActivity
                 fragment = new BadgesFragment();
                 break;
             case R.id.nav_rate:
-                showNotImplementedToastMsg();
+                AppRatingDialog.rateIt(this);
                 break;
             case R.id.nav_settings:
                 fragment = new SettingsFragment();

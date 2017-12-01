@@ -6,4 +6,10 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <string name="rate_it">Rate it</string>
+    <string name="rate_our_app">Rate our App</string>
+    <string name="feedback">Feedback</string>
+    <string name="ask_later">Later</string>
+    <string name="rate_msg">You are a Machine Learning Junkie! If you like our app, please take a moment to rate it!</string>
 </resources>
