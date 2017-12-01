@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MachineLearning</string>
+    <string name="app_name">Machine Learning</string>
     <string name="title_activity_home">HomeActivity</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
