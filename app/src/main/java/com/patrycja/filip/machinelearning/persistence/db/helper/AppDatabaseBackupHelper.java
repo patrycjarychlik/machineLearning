@@ -1,6 +1,14 @@
 package com.patrycja.filip.machinelearning.persistence.db.helper;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Environment;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.patrycja.filip.machinelearning.persistence.db.exception.DbExportException;
 
@@ -14,7 +22,20 @@ import java.nio.channels.FileChannel;
  */
 public abstract class AppDatabaseBackupHelper {
 
-    public static void exportDB() throws DbExportException {
+    public static void exportDatabaseToDownloadsDir(Activity activity) {
+        if (isReadWritePermissionsGranted(activity.getApplicationContext()) && needRequestForPermissions()) {
+            activity.requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+        }
+        try {
+            exportDB();
+            Toast.makeText(activity.getApplicationContext(), "DB Backup successfully created!", Toast.LENGTH_SHORT).show();
+        } catch (DbExportException e) {
+            Log.println(Log.ERROR, "DbExportError", e.getMessage());
+            Toast.makeText(activity.getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private static void exportDB() throws DbExportException {
         try {
             File destinationDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
             File data = Environment.getDataDirectory();
@@ -36,5 +57,14 @@ public abstract class AppDatabaseBackupHelper {
         } catch (Exception e) {
             throw new DbExportException("An error occurred while exporting the database!", e.getCause());
         }
+    }
+
+    private static boolean needRequestForPermissions() {
+        return Build.VERSION.SDK_INT > 22;
+    }
+
+    private static boolean isReadWritePermissionsGranted(Context context) {
+        return ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED;
     }
 }
