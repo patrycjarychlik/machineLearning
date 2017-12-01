@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_margin="15dp">
+
     <RelativeLayout
-        android:layout_width="80dp"
-        android:layout_height="80dp">
+        android:id="@+id/home_page_row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:gravity="center">
+
+        <RelativeLayout
+            android:id="@+id/progress_bar_and_image_wrapper"
+            android:layout_width="100sp"
+            android:layout_height="100sp">
 
         <ImageButton
             android:id="@+id/circle_image_button"
@@ -15,7 +31,7 @@
             android:layout_centerInParent="true"
             android:adjustViewBounds="true"
             android:background="@android:color/transparent"
-            app:srcCompat="@mipmap/ic_launcher_round" />
+            app:srcCompat="@mipmap/hart" />
 
         <ProgressBar
             android:id="@+id/progress_bar"
@@ -31,7 +47,22 @@
             android:indeterminate="false"
             android:max="100"
             android:progressDrawable="@drawable/custom_rotate_progress_bar" />
-
+        </RelativeLayout>
     </RelativeLayout>
+        <TextView
+            android:id="@+id/circleTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Basics"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+
+
+
+
 
 </android.support.constraint.ConstraintLayout>
