@@ -9,9 +9,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
 
 import com.patrycja.filip.machinelearning.R;
+import com.patrycja.filip.machinelearning.commons.SoundPlayer;
 import com.patrycja.filip.machinelearning.persistence.db.entity.ChapterEntity;
 import com.patrycja.filip.machinelearning.persistence.viewmodel.ChapterViewModel;
 
@@ -44,6 +46,9 @@ public class HomeFragment extends Fragment {
 
         ProgressBar progressBar = (ProgressBar) view.findViewById(R.id.progress_bar);
         progressBar.setProgress(30);
+
+        Button btnCorrectSound = (Button) view.findViewById(R.id.btn_correct_sound);
+        btnCorrectSound.setOnClickListener(btnClick -> SoundPlayer.playCorrectAnswerSound(this.getActivity()));
     }
 
 }
