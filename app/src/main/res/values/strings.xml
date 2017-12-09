@@ -12,4 +12,17 @@
     <string name="feedback">Feedback</string>
     <string name="ask_later">Later</string>
     <string name="rate_msg">You are a Machine Learning Junkie! If you like our app, please take a moment to rate it!</string>
+
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="intro_slide_1_title">Hello Geek!</string>
+    <string name="intro_slide_1_desc">The easiest way to learn Machine Learning gives you this app!</string>
+    <string name="intro_slide_2_title">Up for a challenge?</string>
+    <string name="intro_slide_2_desc">You can have a better score if you are systematic and work hard!</string>
+    <string name="intro_slide_3_title">Like badges?</string>
+    <string name="intro_slide_3_desc">We created specially for you a set of badges which are given only to the best of the best!</string>
+    <string name="intro_slide_4_title">Issac Asimov once said</string>
+    <string name="intro_slide_4_desc">"Any teacher that can be replaced by a computer should be replaced by a computer."</string>
 </resources>
