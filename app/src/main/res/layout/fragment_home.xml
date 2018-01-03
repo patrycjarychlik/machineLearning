@@ -13,6 +13,7 @@
         android:layout_margin="20dp"
         android:columnWidth="120dp"
         android:numColumns="2"
+        android:listSelector="@android:color/transparent"
         android:verticalSpacing="10dp"
         android:horizontalSpacing="10dp"
         android:stretchMode="columnWidth"
