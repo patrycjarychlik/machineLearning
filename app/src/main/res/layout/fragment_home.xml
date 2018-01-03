@@ -4,29 +4,40 @@
     android:layout_height="match_parent"
     tools:context="com.patrycja.filip.machinelearning.fragment.HomeFragment">
 
-    <TextView
+
+
+    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/gridview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_vertical|center_horizontal"
-        android:text="This is the home fragment"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+        android:layout_margin="20dp"
+        android:columnWidth="120dp"
+        android:numColumns="2"
+        android:verticalSpacing="10dp"
+        android:horizontalSpacing="10dp"
+        android:stretchMode="columnWidth"
+        android:gravity="center"
+        />
+
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <include
-            layout="@layout/circle_button_with_progress_bar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="bottom">
         <Button
             android:id="@+id/btn_correct_sound"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="Play the correct answer sound" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="This is the home fragment"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
     </LinearLayout>
 
 </FrameLayout>
