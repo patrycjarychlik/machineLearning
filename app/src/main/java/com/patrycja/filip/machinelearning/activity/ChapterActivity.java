@@ -15,9 +15,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.patrycja.filip.machinelearning.R;
-import com.patrycja.filip.machinelearning.adapter.IntroViewPagerAdapter;
+import com.patrycja.filip.machinelearning.adapter.Chapter1Views;
+import com.patrycja.filip.machinelearning.adapter.ChapterViewPagerAdapter;
 import com.patrycja.filip.machinelearning.adapter.IntroViews;
 import com.patrycja.filip.machinelearning.commons.AppSharedPreferences;
+import com.patrycja.filip.machinelearning.persistence.MachineLearningApp;
+import com.patrycja.filip.machinelearning.persistence.db.entity.ChapterProgressEntity;
+import com.patrycja.filip.machinelearning.persistence.repository.ChapterProgressRepository;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ChapterActivity extends AppCompatActivity {
 
@@ -25,10 +32,11 @@ public class ChapterActivity extends AppCompatActivity {
     //TODO implement series of pages for particular chapter
 
     private ViewPager viewPager;
-    private IntroViewPagerAdapter introViewPagerAdapter;
+    private ChapterViewPagerAdapter chapterViewPagerAdapter;
     private LinearLayout llDots;
     private TextView[] dots;
     private Button btnSkip, btnNext;
+    private int chapterId = 1;
 
     public ChapterActivity() {
     }
@@ -36,13 +44,18 @@ public class ChapterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Bundle b = getIntent().getExtras();
+        if(b != null)
+            chapterId = b.getInt("chapterId");
+
         setNotificationBarTransparent();
         setContentView(R.layout.activity_chapter);
         getLayoutElements();
         addBottomDots(0);
 
-        introViewPagerAdapter = new IntroViewPagerAdapter(this);
-        viewPager.setAdapter(introViewPagerAdapter);
+        chapterViewPagerAdapter = new ChapterViewPagerAdapter(this, chapterId);
+        viewPager.setAdapter(chapterViewPagerAdapter);
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
 
         btnSkip.setOnClickListener(v -> launchHomeScreen());
@@ -86,7 +99,7 @@ public class ChapterActivity extends AppCompatActivity {
     }
 
     private void addBottomDots(int currentPage) {
-        dots = new TextView[IntroViews.getSize()];
+        dots = new TextView[Chapter1Views.getSize()];
 
         int[] colorsActive = getResources().getIntArray(R.array.array_dot_active);
         int[] colorsInactive = getResources().getIntArray(R.array.array_dot_inactive);

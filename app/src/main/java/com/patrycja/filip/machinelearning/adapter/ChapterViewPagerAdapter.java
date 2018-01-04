@@ -7,6 +7,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.patrycja.filip.machinelearning.R;
+import com.patrycja.filip.machinelearning.persistence.MachineLearningApp;
+import com.patrycja.filip.machinelearning.persistence.db.entity.ChapterProgressEntity;
+import com.patrycja.filip.machinelearning.persistence.repository.ChapterProgressRepository;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created by patyk on 03.01.2018.
  */
@@ -18,8 +27,10 @@ public class ChapterViewPagerAdapter extends PagerAdapter {
     private LayoutInflater layoutInflater;
     private Activity callerActivity;
 
-    public ChapterViewPagerAdapter(Activity callerActivity) {
+
+    public ChapterViewPagerAdapter(Activity callerActivity, int chapterId) {
         this.callerActivity = callerActivity;
+
     }
 
     @Override
@@ -31,7 +42,7 @@ public class ChapterViewPagerAdapter extends PagerAdapter {
     public Object instantiateItem(ViewGroup container, int position) {
         layoutInflater = (LayoutInflater) callerActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        View view = layoutInflater.inflate(IntroViews.getViewPagerViews().get(position), container, false);
+        View view = layoutInflater.inflate(Chapter1Views.getViewPagerViews().get(position), container, false);
         container.addView(view);
 
         return view;

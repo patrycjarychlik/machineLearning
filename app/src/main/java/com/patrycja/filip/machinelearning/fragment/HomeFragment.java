@@ -55,6 +55,9 @@ public class HomeFragment extends Fragment {
                 gridView.setOnItemClickListener((parent, view1, position, id) -> {
 
                     Intent intent = new Intent(getActivity(), ChapterActivity.class);
+                    Bundle b = new Bundle();
+                    b.putInt("chapterId", position);
+                    intent.putExtras(b);
                     startActivity(intent);
                 });
             }
