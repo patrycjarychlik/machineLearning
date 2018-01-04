@@ -77,6 +77,30 @@ public abstract class AppDatabase extends RoomDatabase {
         basics.put("earned_exp","0");
         basics.put("percentage_progress","0");
         db.insert("chapters", OnConflictStrategy.IGNORE, basics);
+
+        ContentValues chapter2 = new ContentValues();
+        chapter2.put("title","Chapter 2");
+        chapter2.put("description","This is Chapter 2");
+        chapter2.put("is_unlocked","1");
+        chapter2.put("earned_exp","0");
+        chapter2.put("percentage_progress","0");
+        db.insert("chapters", OnConflictStrategy.IGNORE, chapter2);
+
+        ContentValues chapter3 = new ContentValues();
+        chapter3.put("title","Chapter 3");
+        chapter3.put("description","This is Chapter 3");
+        chapter3.put("is_unlocked","1");
+        chapter3.put("earned_exp","0");
+        chapter3.put("percentage_progress","0");
+        db.insert("chapters", OnConflictStrategy.IGNORE, chapter3);
+
+        ContentValues chapter4 = new ContentValues();
+        chapter3.put("title","Chapter 4");
+        chapter3.put("description","This is Chapter 4");
+        chapter3.put("is_unlocked","1");
+        chapter3.put("earned_exp","0");
+        chapter3.put("percentage_progress","0");
+        db.insert("chapters", OnConflictStrategy.IGNORE, chapter4);
     }
 
     private void checkIfAppDatabaseExists(final Context context) {
