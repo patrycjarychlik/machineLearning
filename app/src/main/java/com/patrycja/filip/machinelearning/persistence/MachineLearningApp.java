@@ -3,6 +3,7 @@ package com.patrycja.filip.machinelearning.persistence;
 import android.app.Application;
 
 import com.patrycja.filip.machinelearning.persistence.db.AppDatabase;
+import com.patrycja.filip.machinelearning.persistence.repository.ChapterProgressRepository;
 import com.patrycja.filip.machinelearning.persistence.repository.ChapterRepository;
 
 /**
@@ -24,4 +25,9 @@ public class MachineLearningApp extends Application {
     public ChapterRepository getChapterRepository() {
         return ChapterRepository.getInstance(getDatabase());
     }
+
+    public ChapterProgressRepository getChapterProgressRepository(){
+        return  ChapterProgressRepository.getInstance(getDatabase());
+    }
+
 }

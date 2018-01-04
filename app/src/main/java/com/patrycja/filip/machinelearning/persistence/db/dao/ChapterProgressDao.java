@@ -19,4 +19,7 @@ public interface ChapterProgressDao {
 
     @Query("SELECT * FROM chapter_progress WHERE chapter_id = :chapterId")
     List<ChapterProgressEntity> loadAllByChapterId(int chapterId);
+
+    @Query("SELECT * FROM chapter_progress")
+    List<ChapterProgressEntity> loadAllPages();
 }
