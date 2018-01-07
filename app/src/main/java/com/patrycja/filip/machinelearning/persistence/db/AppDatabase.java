@@ -95,11 +95,11 @@ public abstract class AppDatabase extends RoomDatabase {
         db.insert("chapters", OnConflictStrategy.IGNORE, chapter3);
 
         ContentValues chapter4 = new ContentValues();
-        chapter3.put("title","Chapter 4");
-        chapter3.put("description","This is Chapter 4");
-        chapter3.put("is_unlocked","1");
-        chapter3.put("earned_exp","0");
-        chapter3.put("percentage_progress","0");
+        chapter4.put("title","Chapter 4");
+        chapter4.put("description","This is Chapter 4");
+        chapter4.put("is_unlocked","1");
+        chapter4.put("earned_exp","0");
+        chapter4.put("percentage_progress","0");
         db.insert("chapters", OnConflictStrategy.IGNORE, chapter4);
     }
 
