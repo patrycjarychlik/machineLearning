@@ -15,16 +15,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.patrycja.filip.machinelearning.R;
-import com.patrycja.filip.machinelearning.adapter.Chapter1Views;
-import com.patrycja.filip.machinelearning.adapter.ChapterViewPagerAdapter;
-import com.patrycja.filip.machinelearning.adapter.IntroViews;
+import com.patrycja.filip.machinelearning.adapter.chapters.Chapter1Views;
+import com.patrycja.filip.machinelearning.adapter.chapters.ChapterViewPagerAdapter;
 import com.patrycja.filip.machinelearning.commons.AppSharedPreferences;
 import com.patrycja.filip.machinelearning.persistence.MachineLearningApp;
-import com.patrycja.filip.machinelearning.persistence.db.entity.ChapterProgressEntity;
-import com.patrycja.filip.machinelearning.persistence.repository.ChapterProgressRepository;
-
-import java.util.HashMap;
-import java.util.Map;
+import com.patrycja.filip.machinelearning.persistence.tasks.UpdateExpTask;
+import com.patrycja.filip.machinelearning.persistence.tasks.UpdateProgressBarTask;
+import com.patrycja.filip.machinelearning.persistence.repository.ChapterRepository;
 
 public class ChapterActivity extends AppCompatActivity {
 
@@ -37,6 +34,8 @@ public class ChapterActivity extends AppCompatActivity {
     private TextView[] dots;
     private Button btnSkip, btnNext;
     private int chapterId = 1;
+
+    ChapterRepository chapterRepository = MachineLearningApp.getInstance().getChapterRepository();
 
     public ChapterActivity() {
     }
@@ -61,11 +60,20 @@ public class ChapterActivity extends AppCompatActivity {
         btnSkip.setOnClickListener(v -> launchHomeScreen());
         btnNext.setOnClickListener(v -> {
             int current = getItem(+1);
-            if (current < IntroViews.getSize()) {
+
+            new UpdateProgressBarTask(chapterId).execute();
+
+            if (current == Chapter1Views.getSize()) {
+               new UpdateExpTask(chapterId).execute();
+            }
+            if (current < Chapter1Views.getSize()) {
                 viewPager.setCurrentItem(current);
             } else {
                 launchHomeScreen();
             }
+
+
+
         });
     }
 
@@ -74,13 +82,6 @@ public class ChapterActivity extends AppCompatActivity {
         llDots = (LinearLayout) findViewById(R.id.layout_dots);
         btnSkip = (Button) findViewById(R.id.btn_skip);
         btnNext = (Button) findViewById(R.id.btn_next);
-    }
-
-    private void showIntroOrLaunchHomeActivity() {
-        if (AppSharedPreferences.getInstance(this).isFirstTimeLaunched()) {
-            launchHomeScreen();
-            finish();
-        }
     }
 
     private void launchHomeScreen() {
@@ -109,12 +110,12 @@ public class ChapterActivity extends AppCompatActivity {
             dots[i] = new TextView(this);
             dots[i].setText(Html.fromHtml("&#8226;"));
             dots[i].setTextSize(35);
-            dots[i].setTextColor(colorsInactive[currentPage]);
+            dots[i].setTextColor(colorsInactive[1]);
             llDots.addView(dots[i]);
         }
 
         if (dots.length > 0)
-            dots[currentPage].setTextColor(colorsActive[currentPage]);
+            dots[currentPage].setTextColor(colorsActive[1]);
     }
 
     private int getItem(int i) {

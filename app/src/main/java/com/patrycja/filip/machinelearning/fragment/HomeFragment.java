@@ -12,10 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.TextView;
 
 import com.patrycja.filip.machinelearning.R;
 import com.patrycja.filip.machinelearning.activity.ChapterActivity;
-import com.patrycja.filip.machinelearning.adapter.ChapterAdapter;
+import com.patrycja.filip.machinelearning.adapter.chapters.ChapterAdapter;
 import com.patrycja.filip.machinelearning.commons.SoundPlayer;
 import com.patrycja.filip.machinelearning.persistence.db.entity.ChapterEntity;
 import com.patrycja.filip.machinelearning.persistence.viewmodel.ChapterViewModel;
@@ -49,14 +50,15 @@ public class HomeFragment extends Fragment {
             public void onChanged(@Nullable List<ChapterEntity> chapterEntities) {
                 logModelContent(chapterEntities);
 
-                ChapterAdapter adapter = new ChapterAdapter(getContext(), chapterEntities);
+                ChapterAdapter adapter = new ChapterAdapter(getContext(), chapterEntities, view);
                 GridView gridView = (GridView) view.findViewById(R.id.gridview);
                 gridView.setAdapter(adapter);
+
                 gridView.setOnItemClickListener((parent, view1, position, id) -> {
 
                     Intent intent = new Intent(getActivity(), ChapterActivity.class);
                     Bundle b = new Bundle();
-                    b.putInt("chapterId", position);
+                    b.putInt("chapterId", position + 1);
                     intent.putExtras(b);
                     startActivity(intent);
                 });
@@ -67,7 +69,6 @@ public class HomeFragment extends Fragment {
     private void logModelContent(@Nullable List<ChapterEntity> chapterEntities) {
         Log.println(Log.INFO, "TEST_VIEW_MODEL", "List of chapters: ");
         for (ChapterEntity chapter : chapterEntities) {
-
             Log.println(Log.INFO, "TEST_VIEW_MODEL", "chapter: " + chapter.getTitle() + "-" + chapter.getDescription());
         }
     }

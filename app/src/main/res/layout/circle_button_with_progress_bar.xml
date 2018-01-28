@@ -32,8 +32,22 @@
             android:max="100"
             android:progressDrawable="@drawable/custom_rotate_progress_bar" />
 
-    </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/circle_image_button"
+            android:gravity="center">
 
+            <TextView
+                android:id="@+id/chapter_exp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="345"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </RelativeLayout>
 
 
 </android.support.constraint.ConstraintLayout>

@@ -10,6 +10,15 @@ import java.util.List;
  * Created by zwsfke on 2017-11-27.
  */
 public interface IChapterRepository {
-    void insertAll(List<ChapterEntity> chapterEntities);
+
+    ChapterEntity findById(int chapterId);
+
     LiveData<List<ChapterEntity>> loadChapters();
+
+    void insert(ChapterEntity... entity);
+
+    void update(ChapterEntity entity);
+
+    void delete(ChapterEntity entity);
+
 }

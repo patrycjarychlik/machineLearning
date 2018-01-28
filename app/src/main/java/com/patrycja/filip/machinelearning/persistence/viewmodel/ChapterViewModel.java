@@ -24,7 +24,6 @@ public class ChapterViewModel extends AndroidViewModel {
     public ChapterViewModel(Application application) {
         super(application);
         dataRepository = ((MachineLearningApp) application).getChapterRepository();
-
         observableChapters = dataRepository.loadChapters();
     }
 
@@ -33,7 +32,7 @@ public class ChapterViewModel extends AndroidViewModel {
     }
 
     public void insertAllChapters(List<ChapterEntity> chaptersEntities) {
-        dataRepository.insertAll(chaptersEntities);
+        dataRepository.insert(chaptersEntities.toArray(new ChapterEntity[chaptersEntities.size()]));
     }
 
 }

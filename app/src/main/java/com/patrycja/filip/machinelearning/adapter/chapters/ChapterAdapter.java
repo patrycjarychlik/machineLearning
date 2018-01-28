@@ -1,4 +1,4 @@
-package com.patrycja.filip.machinelearning.adapter;
+package com.patrycja.filip.machinelearning.adapter.chapters;
 
 /**
  * Created by patyk on 03.01.2018.
@@ -21,10 +21,12 @@ public class ChapterAdapter extends BaseAdapter {
 
     private final Context mContext;
     private final List<ChapterEntity> chapters;
+    View homeView;
 
-    public ChapterAdapter(Context context, List<ChapterEntity> chapters) {
+    public ChapterAdapter(Context context, List<ChapterEntity> chapters, View homeView) {
         this.mContext = context;
         this.chapters = chapters;
+        this.homeView = homeView;
     }
 
     @Override
@@ -53,8 +55,13 @@ public class ChapterAdapter extends BaseAdapter {
 
         final TextView chapterName = (TextView)convertView.findViewById(R.id.chapter_name);
         final ProgressBar progressBar = (ProgressBar)convertView.findViewById(R.id.progress_bar);
+        final TextView expPoints = (TextView)homeView.findViewById(R.id.exp_points);
+        final TextView chapterExp = (TextView) convertView.findViewById(R.id.chapter_exp);
+
+        expPoints.setText("All exps: //todo");
         chapterName.setText(chapter.getTitle());
-        progressBar.setProgress(70);
+        progressBar.setProgress(chapter.getPercentageProgress());
+        chapterExp.setText(String.valueOf(chapter.getEarnedExp()));
 
         return convertView;
     }

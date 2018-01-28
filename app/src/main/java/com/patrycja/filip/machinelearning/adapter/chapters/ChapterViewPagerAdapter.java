@@ -1,4 +1,4 @@
-package com.patrycja.filip.machinelearning.adapter;
+package com.patrycja.filip.machinelearning.adapter.chapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -6,15 +6,6 @@ import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.patrycja.filip.machinelearning.R;
-import com.patrycja.filip.machinelearning.persistence.MachineLearningApp;
-import com.patrycja.filip.machinelearning.persistence.db.entity.ChapterProgressEntity;
-import com.patrycja.filip.machinelearning.persistence.repository.ChapterProgressRepository;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by patyk on 03.01.2018.
@@ -35,7 +26,7 @@ public class ChapterViewPagerAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return IntroViews.getSize();
+        return Chapter1Views.getSize();
     }
 
     @Override

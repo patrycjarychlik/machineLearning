@@ -101,6 +101,13 @@ public abstract class AppDatabase extends RoomDatabase {
         chapter4.put("earned_exp","0");
         chapter4.put("percentage_progress","0");
         db.insert("chapters", OnConflictStrategy.IGNORE, chapter4);
+
+        ContentValues userDetails = new ContentValues();
+        userDetails.put("id","1");
+        userDetails.put("total_exp","0");
+        db.insert("user_details", OnConflictStrategy.IGNORE, userDetails);
+
+
     }
 
     private void checkIfAppDatabaseExists(final Context context) {
