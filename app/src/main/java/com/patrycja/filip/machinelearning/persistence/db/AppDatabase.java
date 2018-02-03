@@ -4,10 +4,13 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Database;
+import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.content.ContentValues;
+import android.util.Log;
 
 import com.patrycja.filip.machinelearning.persistence.AppExecutors;
 import com.patrycja.filip.machinelearning.persistence.db.dao.ChapterDao;
@@ -16,6 +19,9 @@ import com.patrycja.filip.machinelearning.persistence.db.dao.UserDetailDao;
 import com.patrycja.filip.machinelearning.persistence.db.entity.ChapterEntity;
 import com.patrycja.filip.machinelearning.persistence.db.entity.ChapterProgressEntity;
 import com.patrycja.filip.machinelearning.persistence.db.entity.UserDetailEntity;
+
+import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * Created by zwsfke on 2017-11-26.
@@ -51,9 +57,57 @@ public abstract class AppDatabase extends RoomDatabase {
                 .addCallback(new Callback() {
                     @Override
                     public void onCreate(@NonNull SupportSQLiteDatabase db) {
+                        Log.println(Log.INFO, "I/DATABASE:", "DB Populated on create" + new Date());
                         super.onCreate(db);
+                        populateDB(db);
+                    }
+                    @Override
+                    public void onOpen(@NonNull SupportSQLiteDatabase db) {
+                        super.onOpen(db);
+                        // DB operation on each db open.
                     }
                 }).addMigrations().build();
+    }
+
+    private static void populateDB(@NonNull SupportSQLiteDatabase db) {
+        ContentValues basics = new ContentValues();
+        basics.put("title","Basics");
+        basics.put("description","Learn Basics od machine learning");
+        basics.put("is_unlocked","1");
+        basics.put("earned_exp","0");
+        basics.put("percentage_progress","0");
+        db.insert("chapters", OnConflictStrategy.IGNORE, basics);
+
+        ContentValues chapter2 = new ContentValues();
+        chapter2.put("title","Chapter 2");
+        chapter2.put("description","This is Chapter 2");
+        chapter2.put("is_unlocked","1");
+        chapter2.put("earned_exp","0");
+        chapter2.put("percentage_progress","0");
+        db.insert("chapters", OnConflictStrategy.IGNORE, chapter2);
+
+        ContentValues chapter3 = new ContentValues();
+        chapter3.put("title","Chapter 3");
+        chapter3.put("description","This is Chapter 3");
+        chapter3.put("is_unlocked","1");
+        chapter3.put("earned_exp","0");
+        chapter3.put("percentage_progress","0");
+        db.insert("chapters", OnConflictStrategy.IGNORE, chapter3);
+
+        ContentValues chapter4 = new ContentValues();
+        chapter4.put("title","Chapter 4");
+        chapter4.put("description","This is Chapter 4");
+        chapter4.put("is_unlocked","1");
+        chapter4.put("earned_exp","0");
+        chapter4.put("percentage_progress","0");
+        db.insert("chapters", OnConflictStrategy.IGNORE, chapter4);
+
+        ContentValues userDetails = new ContentValues();
+        userDetails.put("id","1");
+        userDetails.put("total_exp","0");
+        db.insert("user_details", OnConflictStrategy.IGNORE, userDetails);
+
+
     }
 
     private void checkIfAppDatabaseExists(final Context context) {

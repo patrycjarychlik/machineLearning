@@ -25,6 +25,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.HomeActivity"></activity>
+        <activity android:name=".activity.ChapterActivity"></activity>
+
     </application>
 
 </manifest>
