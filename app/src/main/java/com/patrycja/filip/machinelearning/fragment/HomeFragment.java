@@ -1,6 +1,5 @@
 package com.patrycja.filip.machinelearning.fragment;
 
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,10 +13,7 @@ import android.widget.GridView;
 import com.patrycja.filip.machinelearning.R;
 import com.patrycja.filip.machinelearning.activity.ChapterActivity;
 import com.patrycja.filip.machinelearning.adapter.chapters.ChapterAdapter;
-import com.patrycja.filip.machinelearning.persistence.db.entity.ChapterEntity;
 import com.patrycja.filip.machinelearning.persistence.viewmodel.ChapterViewModel;
-
-import java.util.List;
 
 /**
  * Created by zwsfke on 2017-11-27.
@@ -35,23 +31,22 @@ public class HomeFragment extends Fragment {
         getActivity().setTitle("Home");
 
         final ChapterViewModel chapterViewModel = ViewModelProviders.of(this).get(ChapterViewModel.class);
-        chapterViewModel.getObservableChapters().observe(this, new Observer<List<ChapterEntity>>() {
-            @Override
-            public void onChanged(@Nullable List<ChapterEntity> chapterEntities) {
-                ChapterAdapter adapter = new ChapterAdapter(getContext(), chapterEntities, view);
-                GridView gridView = (GridView) view.findViewById(R.id.gridview);
-                gridView.setAdapter(adapter);
-
-                gridView.setOnItemClickListener((parent, view1, position, id) -> {
-
-                    Intent intent = new Intent(getActivity(), ChapterActivity.class);
-                    Bundle b = new Bundle();
-                    b.putInt("chapterId", position + 1);
-                    intent.putExtras(b);
-                    startActivity(intent);
-                });
-            }
+        chapterViewModel.getObservableChapters().observe(this, chapterEntities -> {
+            ChapterAdapter adapter = new ChapterAdapter(getContext(), chapterEntities);
+            GridView gridView = (GridView) view.findViewById(R.id.gridview);
+            gridView.setAdapter(adapter);
+            gridView.setOnItemClickListener((parent, view1, position, id) -> {
+                startChapterActivity(position + 1);
+            });
         });
+    }
+
+    private void startChapterActivity(int chapterId) {
+        Intent intent = new Intent(getActivity(), ChapterActivity.class);
+        Bundle b = new Bundle();
+        b.putInt("chapterId", chapterId);
+        intent.putExtras(b);
+        startActivity(intent);
     }
 
 }

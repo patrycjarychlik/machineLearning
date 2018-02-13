@@ -18,7 +18,6 @@ public class UpdateExpTask extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected Void doInBackground(Void... arg0) {
-
         ChapterRepository chapterRepository = MachineLearningApp.getInstance().getChapterRepository();
         ChapterEntity chapter = chapterRepository.findById(chapterId);
 
@@ -34,7 +33,6 @@ public class UpdateExpTask extends AsyncTask<Void, Void, Void> {
             }
         }
         return null;
-
     }
 
     @Override

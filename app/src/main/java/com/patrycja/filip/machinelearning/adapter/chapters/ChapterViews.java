@@ -9,7 +9,7 @@ import java.util.List;
  * Created by zwsfke on 2017-12-09.
  */
 
-public class Chapter1Views {
+public class ChapterViews {
 
     private static final List<Integer> viewPagerViews = new ArrayList<Integer>() {{
         add(R.layout.page_basics_title);

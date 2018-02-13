@@ -15,45 +15,30 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.patrycja.filip.machinelearning.R;
-import com.patrycja.filip.machinelearning.adapter.chapters.Chapter1Views;
 import com.patrycja.filip.machinelearning.adapter.chapters.ChapterViewPagerAdapter;
+import com.patrycja.filip.machinelearning.adapter.chapters.ChapterViews;
 import com.patrycja.filip.machinelearning.commons.AppSharedPreferences;
-import com.patrycja.filip.machinelearning.persistence.MachineLearningApp;
 import com.patrycja.filip.machinelearning.persistence.tasks.UpdateExpTask;
 import com.patrycja.filip.machinelearning.persistence.tasks.UpdateProgressBarTask;
-import com.patrycja.filip.machinelearning.persistence.repository.ChapterRepository;
 
 public class ChapterActivity extends AppCompatActivity {
-
-    /** Temorary same as Intro activity only for test purpose **/
-    //TODO implement series of pages for particular chapter
-
     private ViewPager viewPager;
     private ChapterViewPagerAdapter chapterViewPagerAdapter;
     private LinearLayout llDots;
     private TextView[] dots;
     private Button btnSkip, btnNext;
-    private int chapterId = 1;
-
-    ChapterRepository chapterRepository = MachineLearningApp.getInstance().getChapterRepository();
-
-    public ChapterActivity() {
-    }
+    private int chapterId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        Bundle b = getIntent().getExtras();
-        if(b != null)
-            chapterId = b.getInt("chapterId");
-
+        extractChapterId();
         setNotificationBarTransparent();
         setContentView(R.layout.activity_chapter);
         getLayoutElements();
         addBottomDots(0);
 
-        chapterViewPagerAdapter = new ChapterViewPagerAdapter(this, chapterId);
+        chapterViewPagerAdapter = new ChapterViewPagerAdapter(this);
         viewPager.setAdapter(chapterViewPagerAdapter);
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
 
@@ -63,18 +48,22 @@ public class ChapterActivity extends AppCompatActivity {
 
             new UpdateProgressBarTask(chapterId).execute();
 
-            if (current == Chapter1Views.getSize()) {
-               new UpdateExpTask(chapterId).execute();
+            if (current == ChapterViews.getSize()) {
+                new UpdateExpTask(chapterId).execute();
             }
-            if (current < Chapter1Views.getSize()) {
+            if (current < ChapterViews.getSize()) {
                 viewPager.setCurrentItem(current);
             } else {
                 launchHomeScreen();
             }
-
-
-
         });
+    }
+
+    private void extractChapterId() {
+        Bundle b = getIntent().getExtras();
+        if (b != null) {
+            chapterId = b.getInt("chapterId");
+        }
     }
 
     private void getLayoutElements() {
@@ -100,7 +89,7 @@ public class ChapterActivity extends AppCompatActivity {
     }
 
     private void addBottomDots(int currentPage) {
-        dots = new TextView[Chapter1Views.getSize()];
+        dots = new TextView[ChapterViews.getSize()];
 
         int[] colorsActive = getResources().getIntArray(R.array.array_dot_active);
         int[] colorsInactive = getResources().getIntArray(R.array.array_dot_inactive);
@@ -138,12 +127,10 @@ public class ChapterActivity extends AppCompatActivity {
 
         @Override
         public void onPageScrolled(int arg0, float arg1, int arg2) {
-
         }
 
         @Override
         public void onPageScrollStateChanged(int arg0) {
-
         }
     };
 

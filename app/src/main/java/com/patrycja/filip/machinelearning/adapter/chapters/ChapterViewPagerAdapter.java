@@ -12,30 +12,23 @@ import android.view.ViewGroup;
  */
 
 public class ChapterViewPagerAdapter extends PagerAdapter {
-    /** Temorary same as Intro activity only for test purpose **/
-    //TODO implement series of pages for particular chapter
-
     private LayoutInflater layoutInflater;
     private Activity callerActivity;
 
-
-    public ChapterViewPagerAdapter(Activity callerActivity, int chapterId) {
+    public ChapterViewPagerAdapter(Activity callerActivity) {
         this.callerActivity = callerActivity;
-
     }
 
     @Override
     public int getCount() {
-        return Chapter1Views.getSize();
+        return ChapterViews.getSize();
     }
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         layoutInflater = (LayoutInflater) callerActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-        View view = layoutInflater.inflate(Chapter1Views.getViewPagerViews().get(position), container, false);
+        View view = layoutInflater.inflate(ChapterViews.getViewPagerViews().get(position), container, false);
         container.addView(view);
-
         return view;
     }
 
