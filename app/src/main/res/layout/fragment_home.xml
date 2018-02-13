@@ -7,53 +7,29 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:gravity="center"
-        android:background="@color/introSlide3Background">
+        android:background="@color/introSlide3Background"
+        android:gravity="center">
 
         <TextView
             android:id="@+id/exp_points"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="765"
             android:textColor="@android:color/white"
-            android:textSize="25dp"
-            android:text="765"/>
+            android:textSize="25dp" />
     </LinearLayout>
 
-
-    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+    <GridView
         android:id="@+id/gridview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="20dp"
         android:columnWidth="120dp"
-        android:numColumns="2"
-        android:listSelector="@android:color/transparent"
-        android:verticalSpacing="10dp"
-        android:horizontalSpacing="10dp"
-        android:stretchMode="columnWidth"
         android:gravity="center"
+        android:horizontalSpacing="10dp"
+        android:listSelector="@android:color/transparent"
+        android:numColumns="2"
         android:paddingTop="45dp"
-        />
-
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="bottom">
-        <Button
-            android:id="@+id/btn_correct_sound"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Play the correct answer sound" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="This is the home fragment"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
-    </LinearLayout>
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="10dp" />
 
 </FrameLayout>

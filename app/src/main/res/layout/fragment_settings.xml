@@ -11,4 +11,11 @@
         android:text="This is the settings fragment"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
+    <Button
+        android:id="@+id/btn_correct_sound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Play the correct answer sound" />
+    
 </FrameLayout>
