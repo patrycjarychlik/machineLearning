@@ -1,5 +1,6 @@
 package com.patrycja.filip.machinelearning.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
@@ -28,7 +29,7 @@ public class HomeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         AppSharedPreferences.getInstance(getApplicationContext()).incrementLaunchCount();
-        
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -113,7 +114,7 @@ public class HomeActivity extends AppCompatActivity
                 fragment = new SettingsFragment();
                 break;
             case R.id.nav_share:
-                showNotImplementedToastMsg();
+                openSharingChooser();
                 break;
             case R.id.nav_invite_friends:
                 showNotImplementedToastMsg();
@@ -129,6 +130,13 @@ public class HomeActivity extends AppCompatActivity
         changeCurrentView(fragment);
 
         return true;
+    }
+
+    private void openSharingChooser() {
+        Intent share = new Intent(Intent.ACTION_SEND);
+        share.setType("text/plain");
+        share.putExtra(Intent.EXTRA_TEXT, "Hey mate, go to Google Play Store and download this cool app for Machine Learning :)");
+        startActivity(Intent.createChooser(share, "Share Machine Learning"));
     }
 
     private void changeCurrentView(Fragment fragment) {
