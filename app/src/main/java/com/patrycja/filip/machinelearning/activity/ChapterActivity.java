@@ -38,7 +38,7 @@ public class ChapterActivity extends AppCompatActivity {
         getLayoutElements();
         addBottomDots(0);
 
-        chapterViewPagerAdapter = new ChapterViewPagerAdapter(this);
+        chapterViewPagerAdapter = new ChapterViewPagerAdapter(this, chapterId);
         viewPager.setAdapter(chapterViewPagerAdapter);
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
 
@@ -48,10 +48,10 @@ public class ChapterActivity extends AppCompatActivity {
 
             new UpdateProgressBarTask(chapterId).execute();
 
-            if (current == ChapterViews.getSize()) {
+            if (current == ChapterViews.getSize(chapterId)) {
                 new UpdateExpTask(chapterId).execute();
             }
-            if (current < ChapterViews.getSize()) {
+            if (current < ChapterViews.getSize(chapterId)) {
                 viewPager.setCurrentItem(current);
             } else {
                 launchHomeScreen();
@@ -89,7 +89,7 @@ public class ChapterActivity extends AppCompatActivity {
     }
 
     private void addBottomDots(int currentPage) {
-        dots = new TextView[ChapterViews.getSize()];
+        dots = new TextView[ChapterViews.getSize(chapterId)];
 
         int[] colorsActive = getResources().getIntArray(R.array.array_dot_active);
         int[] colorsInactive = getResources().getIntArray(R.array.array_dot_inactive);

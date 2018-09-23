@@ -10,13 +10,13 @@ public interface DatabaseInitializer {
 
     default void populateDatabase(SupportSQLiteDatabase database) {
         database.execSQL("Insert into user_details (total_exp) values (0)");
-        database.execSQL("Insert into chapters (title, is_unlocked, earned_exp, percentage_progress) values ('Chapter 1', '1', '0', '0')");
-        database.execSQL("Insert into chapters (title, is_unlocked, earned_exp, percentage_progress) values ('Chapter 2', '0', '0', '0')");
-        database.execSQL("Insert into chapters (title, is_unlocked, earned_exp, percentage_progress) values ('Chapter 3', '0', '0', '0')");
-        database.execSQL("Insert into chapters (title, is_unlocked, earned_exp, percentage_progress) values ('Chapter 4', '0', '0', '0')");
-        database.execSQL("Insert into chapters (title, is_unlocked, earned_exp, percentage_progress) values ('Chapter 5', '0', '0', '0')");
-        database.execSQL("Insert into chapters (title, is_unlocked, earned_exp, percentage_progress) values ('Chapter 6', '0', '0', '0')");
-        database.execSQL("Insert into chapters (title, is_unlocked, earned_exp, percentage_progress) values ('Chapter 7', '0', '0', '0')");
+        database.execSQL("Insert into chapters (title, is_unlocked, earned_exp, percentage_progress) values ('Basics', '1', '0', '0')");
+        database.execSQL("Insert into chapters (title, is_unlocked, earned_exp, percentage_progress) values ('Market', '0', '0', '0')");
+        database.execSQL("Insert into chapters (title, is_unlocked, earned_exp, percentage_progress) values ('Process', '0', '0', '0')");
+        database.execSQL("Insert into chapters (title, is_unlocked, earned_exp, percentage_progress) values ('Problems', '0', '0', '0')");
+        database.execSQL("Insert into chapters (title, is_unlocked, earned_exp, percentage_progress) values ('Supervised', '0', '0', '0')");
+        database.execSQL("Insert into chapters (title, is_unlocked, earned_exp, percentage_progress) values ('Unsupervised', '0', '0', '0')");
+        database.execSQL("Insert into chapters (title, is_unlocked, earned_exp, percentage_progress) values ('Chapter', '0', '0', '0')");
     }
 
 }

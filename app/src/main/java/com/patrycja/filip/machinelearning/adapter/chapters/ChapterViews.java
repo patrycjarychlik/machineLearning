@@ -21,11 +21,22 @@ public class ChapterViews {
         add(R.layout.page_2_types_algorithms);
     }};
 
-    public static List<Integer> getViewPagerViews() {
+    private static final List<Integer> chapter2 = new ArrayList<Integer>() {{
+        add(R.layout.page_what_the_heck);
+        add(R.layout.page_machine_learning_process);
+    }};
+
+    public static List<Integer> getViewPagerViews(int chapterId) {
+        if(chapterId==2){
+            return chapter2;
+        }
         return viewPagerViews;
     }
 
-    public static int getSize() {
+    public static int getSize(int chapterId) {
+        if(chapterId==2){
+            return chapter2.size();
+        }
         return viewPagerViews.size();
     }
 
