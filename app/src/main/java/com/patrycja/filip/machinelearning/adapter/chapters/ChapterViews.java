@@ -17,7 +17,6 @@ public class ChapterViews {
         add(R.layout.page_tom_mitchell);
         add(R.layout.page_mitchells_example);
         add(R.layout.page_what_the_heck);
-        add(R.layout.page_machine_learning_process);
         add(R.layout.page_2_types_algorithms);
     }};
 
@@ -25,7 +24,12 @@ public class ChapterViews {
         add(R.layout.under_construction);
     }};
     private static final List<Integer> chapter3 = new ArrayList<Integer>() {{
-        add(R.layout.under_construction);
+        add(R.layout.page_proc_title);
+        add(R.layout.page_proc_question);
+        add(R.layout.page_proc_have_data);
+        add(R.layout.page_proc_measure);
+        add(R.layout.page_machine_learning_process);
+        add(R.layout.page_machine_learning_process2);
     }};
     private static final List<Integer> chapter4 = new ArrayList<Integer>() {{
         add(R.layout.under_construction);

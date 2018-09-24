@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/introSlide2Background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        Do you know how to measure success?
+
+
+        1. Choose data( raw)
+        2. Apply preprocessing (preprocessing modules) - >prepared data (iterate)
+        3. Apply learning algorithm to data - > candidate model (iterate)
+        4. Deploy chosen model
+        5. Chosen model  Model must be up to date with reality. Iterate on small and large scale.
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="finally "
+            android:textColor="@android:color/white"
+            android:textSize="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Do you know how to measure success?"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="25dp"
+            app:srcCompat="@drawable/stopwatch" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="27dp"
+            android:paddingRight="27dp"
+            android:paddingTop="20dp"
+            android:text="You need to set a level at which solution is approved. "
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="27dp"
+            android:paddingRight="27dp"
+            android:text="You must know when you're done"
+
+            android:textColor="@android:color/white"
+            android:textSize="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="27dp"
+            android:paddingRight="27dp"
+
+            android:text="Example: Accurate catch of 8/10  fraudulent credit card transactions is enought?"
+            android:textAlignment="center"
+            android:textSize="20dp" />
+
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
