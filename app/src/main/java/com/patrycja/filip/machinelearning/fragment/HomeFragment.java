@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.TextView;
 
 import com.patrycja.filip.machinelearning.R;
 import com.patrycja.filip.machinelearning.activity.ChapterActivity;
@@ -39,6 +40,10 @@ public class HomeFragment extends Fragment {
                 startChapterActivity(position + 1);
             });
         });
+
+        TextView textView = view.findViewById(R.id.exp_points);
+        textView.setText(String.valueOf(129));
+
     }
 
     private void startChapterActivity(int chapterId) {

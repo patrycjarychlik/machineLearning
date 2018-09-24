@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/backgroundGrey">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:paddingLeft="@dimen/intro_desc_padding"
+            android:paddingRight="@dimen/intro_desc_padding"
+            android:text="example problems for"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="35px" />
+
+
+        <TextView
+            android:text="Regression"
+            android:textColor="@android:color/white"
+            android:textSize="25dp"
+            android:padding="15dp"
+            android:textStyle="bold"
+
+            android:background="@color/backgroundDarkGrey"
+            android:layout_width="240dp"
+            android:layout_height="125dp"
+            android:gravity="center"
+            />
+
+        <View
+            android:layout_margin="30dp"
+            android:layout_width="300dp"
+            android:layout_height="2dp"
+            android:background="#ffffff"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/intro_desc_padding"
+            android:paddingRight="@dimen/intro_desc_padding"
+            android:text="What will be the price of this stock on a given date?"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="32px"
+            android:layout_margin="9dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/intro_desc_padding"
+            android:paddingRight="@dimen/intro_desc_padding"
+            android:text="How long will it take to commute from point A to point B?"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="32px"
+            android:layout_margin="9dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/intro_desc_padding"
+            android:paddingRight="@dimen/intro_desc_padding"
+            android:text="What will be the sales of this product in a given week?"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="32px"
+            android:layout_margin="9dp"
+            android:textStyle="bold" />
+
+
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

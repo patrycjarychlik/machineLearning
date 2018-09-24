@@ -5,6 +5,8 @@
     <color name="colorPrimaryMedium">#00897B</color>
     <color name="colorAccent">#3395ff</color>
     <color name="homeBackground">#e8e8e8</color>
+    <color name="backgroundDarkGrey">#9c9c9c</color>
+    <color name="backgroundGrey">#b9b9b9</color>
     <color name="introSlide1Background">#f64c73</color>
     <color name="introSlide2Background">#20d2bb</color>
     <color name="introSlide3Background">#3395ff</color>

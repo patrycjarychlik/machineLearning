@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.patrycja.filip.machinelearning.fragment.HomeFragment">
 
     <LinearLayout
@@ -10,11 +11,20 @@
         android:background="@color/introSlide3Background"
         android:gravity="center">
 
+        <ImageView
+            android:id="@+id/coin_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            app:srcCompat="@mipmap/ic_coins" />
+
         <TextView
             android:id="@+id/exp_points"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="765"
+            android:text="0"
             android:textColor="@android:color/white"
             android:textSize="25dp" />
     </LinearLayout>

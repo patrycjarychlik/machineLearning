@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ChapterViews {
 
-    private static final List<Integer> viewPagerViews = new ArrayList<Integer>() {{
+    private static final List<Integer> basics = new ArrayList<Integer>() {{
         add(R.layout.page_basics_title);
         add(R.layout.page_artur_samuel);
         add(R.layout.page_tom_mitchell);
@@ -22,22 +22,52 @@ public class ChapterViews {
     }};
 
     private static final List<Integer> chapter2 = new ArrayList<Integer>() {{
-        add(R.layout.page_what_the_heck);
-        add(R.layout.page_machine_learning_process);
+        add(R.layout.under_construction);
+    }};
+    private static final List<Integer> chapter3 = new ArrayList<Integer>() {{
+        add(R.layout.under_construction);
+    }};
+    private static final List<Integer> chapter4 = new ArrayList<Integer>() {{
+        add(R.layout.under_construction);
+    }};
+    private static final List<Integer> chapter6 = new ArrayList<Integer>() {{
+        add(R.layout.under_construction);
+    }};
+    private static final List<Integer> chapter7 = new ArrayList<Integer>() {{
+        add(R.layout.under_construction);
+    }};
+
+    private static final List<Integer> chapterSupervised = new ArrayList<Integer>() {{
+        add(R.layout.page_super_title);
+        add(R.layout.page_super_regre2);
+        add(R.layout.page_super_regre);
+        add(R.layout.page_super_class2);
+        add(R.layout.page_super_class);
     }};
 
     public static List<Integer> getViewPagerViews(int chapterId) {
-        if(chapterId==2){
-            return chapter2;
+        switch (chapterId) {
+            case 1:
+                return basics;
+            case 2:
+                return chapter2;
+            case 3:
+                return chapter3;
+            case 4:
+                return chapter4;
+            case 5:
+                return chapterSupervised;
+            case 6:
+                return chapter6;
+            case 7:
+                return chapter7;
+            default:
+                return basics;
         }
-        return viewPagerViews;
     }
 
     public static int getSize(int chapterId) {
-        if(chapterId==2){
-            return chapter2.size();
-        }
-        return viewPagerViews.size();
+        return getViewPagerViews(chapterId).size();
     }
 
 }
