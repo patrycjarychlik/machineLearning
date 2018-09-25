@@ -17,6 +17,7 @@ import com.patrycja.filip.machinelearning.R;
 import com.patrycja.filip.machinelearning.commons.AppSharedPreferences;
 import com.patrycja.filip.machinelearning.components.AppRatingDialog;
 import com.patrycja.filip.machinelearning.fragment.BadgesFragment;
+import com.patrycja.filip.machinelearning.fragment.CreditsFragment;
 import com.patrycja.filip.machinelearning.fragment.HomeFragment;
 import com.patrycja.filip.machinelearning.fragment.SettingsFragment;
 import com.patrycja.filip.machinelearning.persistence.db.helper.AppDatabaseBackupHelper;
@@ -89,6 +90,8 @@ public class HomeActivity extends AppCompatActivity
             navigationView.setCheckedItem(R.id.nav_badges);
         } else if (currentFragment instanceof SettingsFragment) {
             navigationView.setCheckedItem(R.id.nav_settings);
+        } else if (currentFragment instanceof CreditsFragment) {
+            navigationView.setCheckedItem(R.id.nav_credits);
         } else {
             showNotImplementedToastMsg();
         }
@@ -112,6 +115,9 @@ public class HomeActivity extends AppCompatActivity
                 break;
             case R.id.nav_settings:
                 fragment = new SettingsFragment();
+                break;
+            case R.id.nav_credits:
+                fragment = new CreditsFragment();
                 break;
             case R.id.nav_share:
                 openSharingChooser();
