@@ -17,6 +17,7 @@
     <string name="skip">SKIP</string>
     <string name="back">BACK</string>
     <string name="start">GOT IT</string>
+    <string name="ok">OK</string>
 
     <string name="intro_slide_1_title">Hello Geek!</string>
     <string name="intro_slide_1_desc">The easiest way to learn Machine Learning gives you this app!</string>
@@ -38,5 +39,8 @@
     <string name="page_1_3_text_1">The task <b>T</b> of that system is to flag credit card transactions as fraudulent or not.  The performance measure <b>P</b> could be the percentage of fraudulent transactions that are detected.</string>
     <string name="page_1_3_text_2">The system learns if the percentage of fraudulent transactions that are detected increases over time.  Here the experience E is the set of already processed transaction records.  Once a transaction is processed, then we know if it is a fraud or not, and we can feed that information to the system for it learn.</string>
     <string name="page_1_3_text_3">Once a transaction is processed, then we know if it is a fraud or not, and we can feed that information to the system for it learn.</string>
+
+    <string name="upcoming_badge">Upcoming Badge</string>
+    <string name="your_badge">Your Badge</string>
 
 </resources>

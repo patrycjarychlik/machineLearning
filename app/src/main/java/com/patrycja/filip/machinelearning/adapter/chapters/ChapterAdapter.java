@@ -51,7 +51,6 @@ public class ChapterAdapter extends BaseAdapter {
             View view = convertView.findViewById(R.id.chapter_ico);
             ImageView icon = view.findViewById(R.id.circle_image_button);
             icon.setImageResource(getIconForChapter(position));
-
         }
 
         final TextView chapterName = (TextView) convertView.findViewById(R.id.chapter_name);

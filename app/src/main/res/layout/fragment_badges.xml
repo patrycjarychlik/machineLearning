@@ -1,14 +1,18 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.patrycja.filip.machinelearning.fragment.BadgesFragment">
 
-    <TextView
+    <GridView
+        android:id="@+id/badges-grid-view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_vertical|center_horizontal"
-        android:text="This is the badges fragment"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
-
+        android:columnWidth="20dp"
+        android:numColumns="2"
+        android:verticalSpacing="10dp"
+        android:horizontalSpacing="10dp"
+        android:textAlignment="center"
+        android:gravity="center" />
 </FrameLayout>
